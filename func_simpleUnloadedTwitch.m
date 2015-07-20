@@ -1,4 +1,4 @@
-function rawdata = func_simpleUnloaded_Twitch(paramfname)
+function rawdata = func_simpleUnloaded_Twitch(paramfname, outputfname)
 %-------------------------------------------------------------------------%
 % func_simpleUnloadedTwitch.m
 % 
@@ -61,3 +61,26 @@ toc
 
 % Plot result
 plot(rawdata.T, rawdata.SL)
+
+% Save data to disk
+colheads = fieldnames(rawdata); % Get Column headings (fields) of rawdata
+colheadmap = true(length(colheads),1);
+x_dex      = findCellEntriesContainingTargetStr(colheads,'X');
+colheadmap(x_dex) = 0;  % Exclude 'X' from output (it's giant and won't mean much to most people)
+colheads   = colheads(colheadmap);
+
+% Loop over rawdata fields and append each column to a cell array of table
+% entries
+output_cell = cell(length(rawdata.T), length(colheads));    % Preallocate output cell array
+
+for i = 1:length(colheads)
+    field = colheads{i};
+    output_cell(:,i) = num2cell(rawdata.(field));
+       
+end
+
+% Add column headings
+output_cell = [colheads'; output_cell];
+
+dlmcell(outputfname, output_cell)
+    
