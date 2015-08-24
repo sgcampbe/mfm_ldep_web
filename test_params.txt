@@ -1,7 +1,11 @@
-p_f 0.6
-Temp 298
-fapp 0.20
-gxb 2.0
-xbmodsp 1.0
-kon 350
+kb 0.09
+ku 0.45
+kon 300
+koff 0.33
+fapp 500e-3
+gapp 70e-3
+hf 2000e-3
+hb 400e-3
+gxb 70e-3
 gammaB 300
+Temp 298
