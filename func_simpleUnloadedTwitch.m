@@ -70,7 +70,12 @@ toc
 
 
 % Plot result
-% plot(rawdata.T, rawdata.SL)
+h = figure('Visible', 'off');
+plot(rawdata.T, rawdata.SL)
+xlabel('Time (ms)')
+ylabel('Sarcomere Length (µm)')
+print(h, '-dpng', 'output_plot.png')
+
 
 % Save data to disk
 colheads = fieldnames(rawdata); % Get Column headings (fields) of rawdata

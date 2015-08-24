@@ -15,9 +15,11 @@ function rawdata = func_simpleUnloaded_Twitch(varargin)
 fnames = struct('paramfname', 'param_file.txt', ...
                 'outputfname', 'output_file.txt');
             
-input_arg_names = filednames(fnames);
-for i = nargin
-    
+input_arg_names = fieldnames(fnames);
+for i = 1:nargin
+    fnames.(input_arg_names{i}) = varargin{i};
+end
+
 
 
 %----------------------------%
@@ -44,7 +46,7 @@ SL_params  = {1 4 4 0 0};
 % Generate argkey/argvals from textfile %
 %---------------------------------------%
 
-[argkey, argvals] = generateArgChangesFromTextFile(paramfname);
+[argkey, argvals] = generateArgChangesFromTextFile(fnames.paramfname);
 
 % make it an unloaded twitch:
 argkey{end+1} = 'k_s';
@@ -68,7 +70,10 @@ toc
 
 
 % Plot result
+h = figure('Visible', 'off');
 plot(rawdata.T, rawdata.SL)
+print(h, '-dpng', 'output_plot.png')
+
 
 % Save data to disk
 colheads = fieldnames(rawdata); % Get Column headings (fields) of rawdata
@@ -90,5 +95,5 @@ end
 % Add column headings
 output_cell = [colheads'; output_cell];
 
-dlmcell(outputfname, output_cell)
+dlmcell(fnames.outputfname, output_cell)
     
