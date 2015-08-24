@@ -1,0 +1,7 @@
+p_f 0.6
+Temp 298
+fapp 0.20
+gxb 2.0
+xbmodsp 1.0
+kon 350
+gammaB 300
