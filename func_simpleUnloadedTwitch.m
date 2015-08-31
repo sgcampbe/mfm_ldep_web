@@ -97,5 +97,5 @@ end
 % Add column headings
 output_cell = [colheads'; output_cell];
 
-dlmcell(fnames.outputfname, output_cell)
+dlmcell(fnames.outputfname, output_cell, ',')
     
