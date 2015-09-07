@@ -1,11 +1,11 @@
 kb 0.09
 ku 0.45
-kon 300
+kon 350
 koff 0.33
-fapp 500e-3
+fapp 0.3
 gapp 70e-3
 hf 2000e-3
 hb 400e-3
-gxb 70e-3
+gxb 0.25
 gammaB 300
 Temp 298

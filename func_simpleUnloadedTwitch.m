@@ -12,7 +12,7 @@ function rawdata = func_simpleUnloaded_Twitch(varargin)
 %-------------------------------------------------------------------------%
 
 % Handle defaults %
-fnames = struct('paramfname', 'param_file.txt', ...
+fnames = struct('paramfname', 'test_params.txt', ...
                 'outputfname', 'output_file.txt');
             
 input_arg_names = fieldnames(fnames);
